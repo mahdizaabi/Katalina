@@ -20,7 +20,7 @@ app.post('/posts', async (req,res)=>{
     const {title} = req.body;
     posts[id] = {id, title:title}
 
-    await axios.post('http://localhost:3456/events', {
+    await axios.post('http://event-bus-srv:3456/events', {
         type: 'PostCreated',
         data: {
             id,title
@@ -35,5 +35,6 @@ app.post('/events', (req,res)=>{
     res.send({status: 'event received'})
 })
 app.listen(4000, ()=>{
+	console.log('RORORO');
     console.log('posts service is listening on port 4000')
 })

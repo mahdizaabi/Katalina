@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-bus
+  template:
+    metadata:
+      labels:
+        app: event-bus
+    spec:
+      containers:
+        - name: event-bus
+          image: mahdi14x/eventbus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus-srv
+spec:
+  selector:
+    app: event-bus #podsWithLabelEvent-bus
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 3456
+      targetPort: 3456
