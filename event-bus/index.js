@@ -16,9 +16,9 @@ app.post('/events', async (req, res) => {
     console.log('event received :', event);
     // publish the event to the svc subscriberd
     await axios.post('http://post-clusterip-srv:4000/events', event)
-    //await axios.post('http://localhost:5000/events', event)
-    //await axios.post('http://localhost:3005/events', event)
-    //await axios.post('http://localhost:4006/events', event)
+    await axios.post('http://comment-clusterip-srv:5000/events', event)
+    await axios.post('http://moderation-clusterip-srv:4006/events', event)
+    await axios.post('http://query-clusterip-srv:3005/events', event)
 
     eventsQueue.push(event);
 

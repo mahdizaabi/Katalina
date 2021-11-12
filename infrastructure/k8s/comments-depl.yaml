@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comment-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comment
+  template:
+    metadata:
+      labels:
+        app: comment
+    spec:
+      containers:
+        - name: post
+          image: mahdi14x/comment
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comment-clusterip-srv
+spec:
+  selector:
+    app: comment
+  ports:
+    - name: comment
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

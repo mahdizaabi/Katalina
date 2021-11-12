@@ -45,7 +45,7 @@ app.listen(3005, async () => {
     console.log('Query service is listening on 3005');
 
     //get all the events on Boot up
-    const res = await axios.get('http://localhost:3456/events');
+    const res = await axios.get('http://event-bus-srv:3456/events');
     for (let event of res.data) {
         console.log('processing event:', event.type);
         handleEvents(event.type, event.data)
