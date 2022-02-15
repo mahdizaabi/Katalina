@@ -1,4 +1,4 @@
-# Sample Microservice Architecture using event souring and CQRS (command query responsibility segregation)
+# Posts moderation solution based on microservices Architecture using event souring and CQRS design patterns (command query responsibility segregation)
 
 ## 🔨🧰Development considerations:
 - Please install Docker locally
